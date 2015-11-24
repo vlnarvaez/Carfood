@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:showIn="@layout/activity_orden" tools:context="com.paralela.esantiago.restfood.orden">
+
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <TableRow>
+
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="110"
+                android:padding="15dp"
+                android:text="Imagen"
+                android:textColor="#005500"
+                android:textSize="22sp"/>
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="220dp"
+                android:padding="25dp"
+                android:text="Nombre"
+                android:textColor="#005500"
+                android:textSize="22sp"/>
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:padding="15dp"
+                android:text="Precio"
+                android:textColor="#005500"
+                android:textSize="22sp"/>
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:padding="15dp"
+                android:text="Seleccione"
+                android:textColor="#005500"
+                android:textSize="22sp"/>
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:padding="15dp"
+                android:text="Cantidad"
+                android:textColor="#005500"
+                android:textSize="22sp"/>
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:padding="15dp"
+                android:text="Observaciones"
+                android:textColor="#005500"
+                android:textSize="22sp"/>
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/SeparadorCabecera"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+            <FrameLayout
+                android:id="@+id/LineaCabecera"
+                android:layout_width="fill_parent"
+                android:layout_height="2px"
+                android:layout_span="6"
+                android:background="#FFFFFF" >
+            </FrameLayout>
+        </TableRow>
+
+        <TableRow>
+            <ImageView
+                android:layout_height="fill_parent"
+                android:layout_width=""
+                android:src="@mipmap/desayuno"/>
+
+            <TextView
+                android:layout_marginLeft="50dp"
+                android:text="Plato 1"/>
+
+            <TextView
+                android:layout_marginLeft="30dp"
+                android:text="3.oo"/>
+
+            <CheckBox
+                android:layout_marginLeft="50dp"
+                android:layout_height="35dp"
+                android:layout_width="35dp"/>
+
+            <EditText />
+
+            <EditText />
+
+        </TableRow>
+
+        <TableRow>
+            <ImageView
+                android:layout_height="fill_parent"
+                android:layout_width=""
+                android:src="@mipmap/desayuno"/>
+
+            <TextView
+                android:layout_marginLeft="50dp"
+                android:text="Plato 1"/>
+
+            <TextView
+                android:layout_marginLeft="30dp"
+                android:text="3.oo"/>
+
+            <CheckBox
+                android:layout_marginLeft="50dp"
+                android:layout_height="35dp"
+                android:layout_width="35dp"/>
+
+            <EditText />
+
+            <EditText />
+
+        </TableRow>
+
+        <TableRow>
+            <ImageView
+                android:layout_height="fill_parent"
+                android:layout_width=""
+                android:src="@mipmap/desayuno"/>
+
+            <TextView
+                android:layout_marginLeft="50dp"
+                android:text="Plato 1"/>
+
+            <TextView
+                android:layout_marginLeft="30dp"
+                android:text="3.oo"/>
+
+            <CheckBox
+                android:layout_marginLeft="50dp"
+                android:layout_height="35dp"
+                android:layout_width="35dp"/>
+
+            <EditText />
+
+            <EditText />
+
+        </TableRow>
+
+        <TableRow>
+            <ImageView
+                android:layout_height="fill_parent"
+                android:layout_width=""
+                android:src="@mipmap/desayuno"/>
+
+            <TextView
+                android:layout_marginLeft="50dp"
+                android:text="Plato 1"/>
+
+            <TextView
+                android:layout_marginLeft="30dp"
+                android:text="3.oo"/>
+
+            <CheckBox
+                android:layout_marginLeft="50dp"
+                android:layout_height="35dp"
+                android:layout_width="35dp"/>
+
+            <EditText />
+
+            <EditText />
+
+        </TableRow>
+
+        <TableRow>
+            <ImageView
+                android:layout_height="fill_parent"
+                android:layout_width=""
+                android:src="@mipmap/desayuno"/>
+
+            <TextView
+                android:layout_marginLeft="50dp"
+                android:text="Plato 1"/>
+
+            <TextView
+                android:layout_marginLeft="30dp"
+                android:text="3.oo"/>
+
+            <CheckBox
+                android:layout_marginLeft="50dp"
+                android:layout_height="35dp"
+                android:layout_width="35dp"/>
+
+            <EditText />
+
+            <EditText />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+        </TableRow>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Enviar"
+            android:id="@+id/button"
+            android:layout_column="5" />
+
+    </TableLayout>
+</RelativeLayout>
