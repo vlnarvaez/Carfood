@@ -1,0 +1,24 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1348\cocoasubrtf170
+{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;\f1\fnil\fcharset0 Menlo-Italic;}
+{\colortbl;\red255\green255\blue255;\red204\green120\blue50;\red43\green43\blue43;\red169\green183\blue198;
+\red187\green181\blue41;\red255\green198\blue109;\red152\green118\blue170;\red106\green135\blue89;\red128\green128\blue128;
+}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+
+\f0\fs24 \cf2 \cb3 package \cf4 com.example.acyoby.prefactura\cf2 ;\uc0\u8232 \u8232 import \cf4 android.os.Bundle\cf2 ;\uc0\u8232 import \cf4 android.support.design.widget.FloatingActionButton\cf2 ;\uc0\u8232 import \cf4 android.support.design.widget.Snackbar\cf2 ;\uc0\u8232 import \cf4 android.support.v7.app.AppCompatActivity\cf2 ;\uc0\u8232 import \cf4 android.support.v7.widget.Toolbar\cf2 ;\uc0\u8232 import \cf4 android.view.View\cf2 ;\uc0\u8232 import \cf4 android.view.Menu\cf2 ;\uc0\u8232 import \cf4 android.view.MenuItem\cf2 ;\uc0\u8232 \u8232 public class \cf4 MainActivity \cf2 extends \cf4 AppCompatActivity \{\uc0\u8232 \u8232     \cf5 @Override\uc0\u8232     \cf2 protected void \cf6 onCreate\cf4 (Bundle savedInstanceState) \{\uc0\u8232         \cf2 super\cf4 .onCreate(savedInstanceState)\cf2 ;\uc0\u8232         \cf4 setContentView(R.layout.
+\f1\i \cf7 activity_main
+\f0\i0 \cf4 )\cf2 ;\uc0\u8232         \cf4 Toolbar toolbar = (Toolbar) findViewById(R.id.
+\f1\i \cf7 toolbar
+\f0\i0 \cf4 )\cf2 ;\uc0\u8232         \cf4 setSupportActionBar(toolbar)\cf2 ;\uc0\u8232 \u8232         \cf4 FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.
+\f1\i \cf7 fab
+\f0\i0 \cf4 )\cf2 ;\uc0\u8232         \cf4 fab.setOnClickListener(\cf2 new \cf4 View.OnClickListener() \{\uc0\u8232             \cf5 @Override\uc0\u8232             \cf2 public void \cf6 onClick\cf4 (View view) \{\uc0\u8232                 Snackbar.
+\f1\i make
+\f0\i0 (view\cf2 , \cf8 "Replace with your own action"\cf2 , \cf4 Snackbar.
+\f1\i \cf7 LENGTH_LONG
+\f0\i0 \cf4 )\uc0\u8232                         .setAction(\cf8 "Action"\cf2 , null\cf4 ).show()\cf2 ;\uc0\u8232             \cf4 \}\uc0\u8232         \})\cf2 ;\uc0\u8232     \cf4 \}\uc0\u8232 \u8232     \cf5 @Override\uc0\u8232     \cf2 public boolean \cf6 onCreateOptionsMenu\cf4 (Menu menu) \{\uc0\u8232         \cf9 // Inflate the menu; this adds items to the action bar if it is present.\uc0\u8232         \cf4 getMenuInflater().inflate(R.menu.
+\f1\i \cf7 menu_main
+\f0\i0 \cf2 , \cf4 menu)\cf2 ;\uc0\u8232         return true;\u8232     \cf4 \}\uc0\u8232 \u8232     \cf5 @Override\uc0\u8232     \cf2 public boolean \cf6 onOptionsItemSelected\cf4 (MenuItem item) \{\uc0\u8232         \cf9 // Handle action bar item clicks here. The action bar will\uc0\u8232         // automatically handle clicks on the Home/Up button, so long\u8232         // as you specify a parent activity in AndroidManifest.xml.\u8232         \cf2 int \cf4 id = item.getItemId()\cf2 ;\uc0\u8232 \u8232         \cf9 //noinspection SimplifiableIfStatement\uc0\u8232         \cf2 if \cf4 (id == R.id.
+\f1\i \cf7 action_settings
+\f0\i0 \cf4 ) \{\uc0\u8232             \cf2 return true;\uc0\u8232         \cf4 \}\uc0\u8232 \u8232         \cf2 return super\cf4 .onOptionsItemSelected(item)\cf2 ;\uc0\u8232     \cf4 \}\uc0\u8232 \}\u8232 \
+}
