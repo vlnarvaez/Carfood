@@ -1,0 +1,20 @@
+body {
+    background-image: url("../img/Menu.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+#casillas{
+	padding-top: 300px;
+	padding-left: 100px;
+	font-size: 0.8cm; 
+}
+#tabla{
+	text-align: center;
+	padding-left: 200px;
+}
+#nombre{
+	text-align: center;
+	padding-top: 300px;
+	
+	font-size: 0.8cm;
+}
