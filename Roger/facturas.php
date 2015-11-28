@@ -1,6 +1,6 @@
 
 <?php
-
+require('conexion.php');
 session_start();
 $user = isset($_SESSION["miSession"]['USUARIO']) ? $_SESSION["miSession"]['USUARIO'] : null ;
 
@@ -8,18 +8,6 @@ if($user == ''){
 	header('Location: logeo.php?error=2');
 }
 
-/*if($_SESSION["miSession"]['TIPO']==2){
-	
-	?>
-	<div>
-		<p><font color="#FFFFFF">Bienvenido: <?php echo $_SESSION["miSession"]['USUARIO'];?></font>
-		<font color="#FFFFFF"> <?php echo " <a href='cerrarsesion.php'>cerrar session</a>";?></font></p>
-	</div>
-	<?php
-	
-}else{
-    header('Location: logeo.php?error=1');
-}*/	
 
 ?>
 <a href='cerrarsesion.php'>cerrar session</a>
@@ -52,51 +40,37 @@ if($user == ''){
                         <div class="CSS_Table_Example" style="text-align:center, width:200px;height:100px;">
 
 							<table >
-								<tr> 
-									<td>
-										# De Mesas
-									</td>
-									<td >
-										Factura
-									</td>
-									<td>
-										Ver
-									</td>
+								<tr> 													
+                                    <td>Detalle Factura</td>
+									<td>Ver</td>
 								</tr>
-								<tr>
-									<td >
-										 1
-									</td>
-									<td>
-										Factura #1: a nombre de Pedro Carrion 
-									</td>
-									<td>
-									  <a href="">ir a factura</a> 
-									</td>
+								
+                                <?php
+								$consulta=mysql_query("SELECT * FROM cliente");
+								if($consulta == FALSE) { 
+    								die(mysql_error()); // error con la conecxion
+								}
+								while($consulta2 = mysql_fetch_array($consulta)){ 
+								?>
+                                <tr>
+                                	<form class="form-4" role="form" method="post" action="facturasPdf.php">  
+	                                	<p>                              		
+	                                    <td><input type="radio" name="cedula" class="form-control" value=<?php echo $consulta2['CEDULA'];?>> <?php echo $consulta2['NOMBRES'];?></td>																		
+										</p>
+										<p>
+							        	<td></td>
+							        	</p> 
+
+									
 								</tr>
-								<tr>
-									<td >
-										 2
-									</td>
-									<td>
-										Factura #2: a nombre de Alejandra Perez
-									</td>
-									<td>
-										<a href="">ir a factura</a>
-									</td>
-								</tr>
-								<tr>
-									<td >
-										3
-									</td>
-									<td>
-										Factura #3: a nombre de Diana Jaramillo
-									</td>
-									<td>
-										<a href="">ir a factura</a>
-									</td>
-								</tr>
+								
+								<?php } ?>
+                               
 							</table>
+							<input id="enviar" type="submit" name="submit" value="VerPrefactura">
+							</form>
+						
+
 					</div>
 
 			</div>		
