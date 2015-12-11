@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html ng-app="starter">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <title></title>
+
+  <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+
+  <script src="lib/ionic/js/ionic.bundle.js"></script>
+  <script src="cordova.js"></script>
+
+  <script src="cordova.js"></script>
+  <script src="js/app.js"></script>
+</head>
+<body ng-controller="MainCtrl">
+  <ion-side-menus>
+    <ion-side-menu side="left">
+      <ion-item><img src="../img/logo-carfood.png" height="60" width="110"></ion-item>
+      <ion-list>
+        <ion-item>Desayunos</ion-item>
+      </ion-list>
+      <ion-list>
+        <ion-item>Almuerzos</ion-item>
+      </ion-list>
+      <ion-list>
+        <ion-item>Meriendas</ion-item>
+      </ion-list>
+      <ion-list>
+        <ion-item>Postres</ion-item>
+      </ion-list>
+      <ion-list>
+        <ion-item>Bedidas</ion-item>
+      </ion-list>
+      <ion-list>
+        <ion-item>Platos a la carta</ion-item>
+      </ion-list>
+    </ion-side-menu>
+    <ion-side-menu-content>
+      <ion-header-bar class="bar bar-header bar-assertive">
+        <button class="button button-icon icon ion-navicon" ng-click="toogleLeft()"></button>
+        <h1 class="title">CarFOOD</h1>
+      </ion-header-bar>
+
+      <ion-content id="content">
+
+        <div class="list" ng-controller="GuardarPlatosCtrl">
+          <label class="item item-input">
+            <span class="input-label">Nombre</span>
+            <input type="text" ng-model="plato.nuevoNombre">
+          </label>
+          <label class="item item-input">
+            <span class="input-label">Precio</span>
+            <input type="text" ng-model="plato.nuevoPrecio">
+          </label>
+          <button class="button button-full button-balanced" ng-click="guardarPlato()">Guardar</button>
+        </div>
+
+
+        <div ng-controller="BdCtrl">
+
+          <div class="list card" ng-repeat="plato in platos">
+            <div class="item item-avatar">
+              <img src="../img/ionic.png">
+              <h2>{{plato.nombre}}</h2>
+              <p>{{plato.precio}}</p>
+            </div>
+            <li class="item item-checkbox">
+              <label class="checkbox checkbox-assertive">
+                <input type="checkbox">
+              </label>
+              Añadir
+            </li>
+            <div class="item range range-assertive">
+              <i class="icon ion-minus-round"></i>
+              <input type="range" name="volume" min="0" max="4" value="0">
+              <i class="icon ion-plus-round"></i>
+            </div>
+          </div>
+        </div>
+      </ion-content>
+    </ion-side-menu-content>
+  </ion-side-menus>
+  <script src="lib/ionic/js/angular/angular.min.js" type="text/javascript"></script>
+  <script src="js/controladores.js" type="text/javascript"></script>
+
+
+</body>
+</html>

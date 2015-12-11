@@ -1,0 +1,53 @@
+<ion-side-menus enable-menu-with-back-views="false">
+  <ion-side-menu-content>
+    <ion-nav-bar class="bar-stable bar-assertive">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+
+      <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+        </button>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-nav-view name="menuContent"></ion-nav-view>
+  </ion-side-menu-content>
+
+  <ion-side-menu side="left">
+
+    <ion-content>
+      <ion-list>
+
+
+        <div class="" id="fondoMenu">
+          <div class="" style="padding:1em">
+
+            <div class="" id="avatarSideMenu"></div>
+            <br>
+            <h4 style="color:white"><strong>{{sesion}}</strong></h4>
+          </div>
+
+
+        </div>
+
+        <ion-item menu-close href="#/app/principal">
+          Almuerzos
+        </ion-item>
+        <ion-item menu-close href="#/app/playlists">
+          Meriendas
+        </ion-item>
+        <ion-item menu-close href="#/app/playlist">
+          Platos a la carta
+        </ion-item>
+        <ion-item menu-close href="#/app/bebidas">
+          Bebidas
+        </ion-item>
+        <ion-item menu-close href="#/app/postres">
+          Postres
+        </ion-item>
+        <ion-item menu-close ng-click="login()">
+          <strong>Login</strong>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus>

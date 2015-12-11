@@ -1,0 +1,27 @@
+<ion-view view-title="CARFOOOD">
+  <ion-content>
+    <ion-list>
+      <div class="list card" ng-repeat="plato in playlists">
+        <div class="item item-avatar">
+          <img src="../img/ionic.png">
+          <h2>{{plato.nombre}}</h2>
+          <p>{{plato.precio}}</p>
+        </div>
+        <div class="">
+          <li class="item item-checkbox">
+            <label class="checkbox checkbox-assertive">
+              <input type="checkbox">
+            </label>
+            Añadir
+          </li>
+          <div class="item range range-assertive">
+            <i class="icon ion-minus-round"></i>
+            <input type="range" name="volume" min="0" max="4" value="0">
+            <i class="icon ion-plus-round"></i>
+          </div>
+        </div>
+
+      </div>
+    </ion-list>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,30 @@
+/* Empty. Add your own CSS if you like */
+#fondoMenu{
+  background-image: url("../img/fondoCabeceraMenu.png");
+  background-size: cover;
+  background-position: bottom;
+  height: 11em;
+  margin-top: -.1em;
+}
+
+#avatarSideMenu{
+  background-image: url("../img/logo-carfood.png");
+  background-size: cover;
+  height: 5em;
+  width: 5em;
+  border-radius: 45em;
+  border-color: black;
+  border-width: medium;
+
+}
+#testImg{
+  background-image: url("../img/fondoCabeceraMenu.png");
+}
+#izqCard{
+  float: left;
+  height: 4.4em;
+}
+
+#derCard{
+  float: right;
+}
