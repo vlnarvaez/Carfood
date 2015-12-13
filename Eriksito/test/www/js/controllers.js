@@ -16,6 +16,10 @@ angular.module('starter.controllers', [])
     $scope.modal.hide();
   };
 
+  $scope.datos = function() {
+    
+  }
+
   // Open the login modal
   $scope.login = function() {
     $scope.modal.show();
@@ -33,20 +37,24 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('PlaylistsCtrl', function($scope, $rootScope, $http, sesion) {
-  $rootScope.sesion = "SI";
-  alert($rootScope.sesion);
-
+.controller('PlatosCartaCtrl', function($scope, $rootScope, $http, $stateParams, sesion) {
   $http({
     method: 'GET',
-    url: "http://192.168.1.14/demo/platosCarta.php"
+    url: "http://192.168.1.14/demo/platosCarta.php?tipo="+$stateParams.tipo
   }).success(function(data, status, headers, config) {
-    $scope.playlists=data;
+    $scope.platos=data;
   }).error(function(data, status, headers, config) {
     alert("Error. Estado HTTP:"+status);
   });
 })
 
-.controller('PlaylistCtrl', function($scope, $stateParams, sesion) {
-  sesion = "N";
-});
+.controller('MenuesCtrl', function($scope, $rootScope, $http, $stateParams, sesion) {
+  $http({
+    method: 'GET',
+    url: "http://192.168.1.14/demo/menuesCarta.php?tipo="+$stateParams.tipo
+  }).success(function(data, status, headers, config) {
+    $scope.menues=data;
+  }).error(function(data, status, headers, config) {
+    alert("Error. Estado HTTP:"+status);
+  });
+})

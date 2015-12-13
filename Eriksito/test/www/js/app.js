@@ -29,50 +29,62 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     controller: 'AppCtrl'
   })
 
-  .state('app.search', {
-    url: '/search',
+  .state('app.almuerzos', {
+    url: '/almuerzos/:tipo',
     views: {
       'menuContent': {
-        templateUrl: 'templates/search.html'
-      }
-    }
-  })
-
-  .state('app.browse', {
-    url: '/browse',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/browse.html',
-        controller: ''
-      }
-    }
-  })
-  .state('app.playlists', {
-    url: '/playlists',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/playlists.html',
-        controller: 'PlaylistsCtrl'
-      }
-    }
-  })
-
-  .state('app.single', {
-    url: '/playlists/:playlistId',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/playlist.html',
-        controller: 'PlaylistCtrl'
+        templateUrl: 'templates/almuerzos.html',
+        controller: 'MenuesCtrl'
       }
     }
   })
 
   .state('app.bebidas', {
-    url: '/bebidas',
+    url: '/bebidas/:tipo',
     views: {
       'menuContent': {
         templateUrl: 'templates/bebidas.html',
-        controller: 'PlaylistCtrl'
+        controller: 'PlatosCartaCtrl'
+      }
+    }
+  })
+
+  .state('app.desayunos', {
+    url: '/desayunos/:tipo',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/desayunos.html',
+        controller: 'MenuesCtrl'
+      }
+    }
+  })
+
+  .state('app.meriendas', {
+    url: '/meriendas/:tipo',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/meriendas.html',
+        controller: 'MenuesCtrl'
+      }
+    }
+  })
+
+  .state('app.platosCarta', {
+    url: '/platosCarta/:tipo',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/platosCarta.html',
+        controller: 'PlatosCartaCtrl'
+      }
+    }
+  })
+
+  .state('app.postres', {
+    url: '/postres/:tipo',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/postres.html',
+        controller: 'PlatosCartaCtrl'
       }
     }
   })
@@ -82,7 +94,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     views: {
       'menuContent': {
         templateUrl: 'templates/principal.html',
-        controller: 'PlaylistCtrl'
+        controller: ''
       }
     }
   });
