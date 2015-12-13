@@ -1,24 +1,39 @@
 <ion-view view-title="CARFOOOD">
   <ion-content>
     <ion-list>
-      <div class="list card" ng-repeat="plato in playlists">
-        <div class="item item-avatar">
-          <img src="../img/ionic.png">
-          <h2>{{plato.nombre}}</h2>
-          <p>{{plato.precio}}</p>
-        </div>
-        <div class="">
-          <li class="item item-checkbox">
-            <label class="checkbox checkbox-assertive">
-              <input type="checkbox">
-            </label>
-            Añadir
-          </li>
-          <div class="item range range-assertive">
-            <i class="icon ion-minus-round"></i>
-            <input type="range" name="volume" min="0" max="4" value="0">
-            <i class="icon ion-plus-round"></i>
+      <div class="list card" >
+
+        <div class="card" ng-repeat="plato in playlists">
+          <div class="item item-avatar">
+            <img src="http://www.lataberna.com.ec/734-large_default/pilsener-twiss-off.jpg" >
+            <h2>{{plato.NOMBRE}}</h2>
+            <p>{{plato.PRECIO}}</p>
           </div>
+          <div class="item item-body">
+            <img class="full-image" src="https://pbs.twimg.com/profile_images/1191028919/pilsener.jpg" alt="" />
+            <p style="text-align:justify">
+              {{plato.DETALLE}}
+            </p>
+          </div>
+          <div class="row">
+            <div class="col col-15">
+              <div class="checkbox checkbox-balanced">
+                <label class="checkbox">
+                  <input type="checkbox">
+                </label>
+              </div>
+            </div>
+            <div class="col col-75">
+              <div class="range range-positive">
+                <i class="icon ion-volume-low"></i>
+                <input type="range" name="volume">
+                <i class="icon ion-volume-high"></i>
+              </div>
+            </div>
+          </div>
+
+
+
         </div>
 
       </div>

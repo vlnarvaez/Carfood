@@ -39,7 +39,7 @@ angular.module('starter.controllers', [])
 
   $http({
     method: 'GET',
-    url: "http://127.0.0.1/demo/persisirPlatos.php"
+    url: "http://192.168.1.14/demo/platosCarta.php"
   }).success(function(data, status, headers, config) {
     $scope.playlists=data;
   }).error(function(data, status, headers, config) {
