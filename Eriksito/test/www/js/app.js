@@ -34,7 +34,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     views: {
       'menuContent': {
         templateUrl: 'templates/almuerzos.html',
-        controller: 'MenuesCtrl'
+        controller: 'PlatosCartaCtrl'
       }
     }
   })

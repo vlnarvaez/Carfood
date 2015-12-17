@@ -2,36 +2,36 @@
   <ion-content>
     <div class="" id="fondoMenu">
       <div class="" style="padding:1em">
-        <h1 style="color:white">Almuerzos</h1>
+        <h1 style="color:white">Almuerzoss</h1>
         <br>
       </div>
     </div>
     <div class="list card">
-      <div class="card" ng-repeat="menu in menues">
+      <div class="card" ng-repeat="plato in platos">
         <div class="item item-avatar">
           <img src="http://www.lataberna.com.ec/734-large_default/pilsener-twiss-off.jpg" >
-          <h2>Menu testei</h2>
-          <p>{{menu.PRECIO}}</p>
+          <h2>{{plato.NOMBRE}}</h2>
+          <p>{{plato.PRECIO}}</p>
         </div>
         <div class="item item-body">
-          <img class="full-image" src="https://pbs.twimg.com/profile_images/1191028919/pilsener.jpg" alt="" />
+          <img class="full-image" src={{plato.IMAGEN}} alt="" />
           <p style="text-align:justify">
-            Descripción
+            {{plato.DETALLE}}
           </p>
         </div>
         <div class="row">
           <div class="col col-15">
             <div class="checkbox checkbox-balanced">
               <label class="checkbox">
-                <input type="checkbox">
+                <input type="checkbox" ng-change="agregar(plato)" ng-model="selection[plato.ID_PLATO]" name="group" id="{{plato.ID_PLATO}}">
               </label>
             </div>
           </div>
           <div class="col col-75">
             <div class="range range-positive">
-              <i class="icon ion-volume-low"></i>
+              <i class="icon ion-minus-round"></i>
               <input type="range" name="volume">
-              <i class="icon ion-volume-high"></i>
+              <i class="icon ion-plus-round"></i>
             </div>
           </div>
         </div>

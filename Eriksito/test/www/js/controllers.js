@@ -1,7 +1,7 @@
 angular.module('starter.controllers', [])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
-
+  $scope.selection = {};
   $scope.loginData = {};
 
   // Create the login modal that we will use later
@@ -11,13 +11,20 @@ angular.module('starter.controllers', [])
     $scope.modal = modal;
   });
 
+  $scope.agregar = function(plato){
+    var idPlato = plato.IDPLATO;
+
+    $scope.selection[idPlato].cantidad = 1;
+    $scope.selection[idPlato].nombrePlato = plato.NOMBRE;
+  }
+
   // Triggered in the login modal to close it
   $scope.closeLogin = function() {
     $scope.modal.hide();
   };
 
   $scope.datos = function() {
-    
+    alert($scope.loginData.Fritada)
   }
 
   // Open the login modal
@@ -40,7 +47,7 @@ angular.module('starter.controllers', [])
 .controller('PlatosCartaCtrl', function($scope, $rootScope, $http, $stateParams, sesion) {
   $http({
     method: 'GET',
-    url: "http://192.168.1.14/demo/platosCarta.php?tipo="+$stateParams.tipo
+    url: "http://172.18.82.250/demo/platosCarta.php?tipo='"+$stateParams.tipo+"'"
   }).success(function(data, status, headers, config) {
     $scope.platos=data;
   }).error(function(data, status, headers, config) {
