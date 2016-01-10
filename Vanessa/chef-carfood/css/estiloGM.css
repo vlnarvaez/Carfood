@@ -1,0 +1,215 @@
+body {
+    background: url(../images/background.jpg) no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: 50% 50%;
+    font-family: 'Open Sans', sans-serif;
+}
+
+section#logo{
+    margin-top: 2em;
+    margin-left: 33em;
+    margin-bottom: 3em;
+}
+section #logo2 img{
+    margin-top: 1.5em;
+    margin-left: 5em;
+}
+section#logo3 img{
+    margin-top: 2em;
+    margin-left: 13em;
+    margin-bottom: 3em;
+}
+section #busqueda{ 
+    width: 80%;
+    height: 100px;
+    margin-bottom: 2em;
+    color: black;
+    background: white;
+}
+section #subtitulo{
+    width: 16%;
+    display: inline-block;
+    margin-top: 1em;
+    margin-left: 1.8em;
+}
+section #busqueda select{
+    display: inline-block;
+    margin-top: -3em;
+    margin-left: 15em;
+    width: 10em;
+}
+section #buttonConsultar button{
+    /*border-radius: 0.5em;*/
+    display: inline-block;
+    margin-top: -12.5em;
+}
+section #buttonMesa a{
+    text-decoration: none;
+    color: green;
+    border-radius: 0.5em;
+    display: inline-block;
+    margin-top: -4.5em;
+    margin-left: 60em;
+}
+section #buttonReserva a{
+    text-decoration: none;
+    color: green;
+    border-radius: 0.5em;
+    display: inline-block;
+    margin-top: -2.5em;
+    margin-left: 60em;
+}
+section#tabla{
+    width: 75em;
+    margin-left: 5em; 
+}
+section#tabla tr td{
+    width: 75em;
+    text-align: center;
+}
+section#tabla input{
+    margin-top: 1em; 
+}
+section#tabla td{
+    background: white;
+    color: black;
+    text-align: center;
+}
+section#tabla a{
+    text-decoration: none;
+    color: green;
+    text-align: center;
+}
+section#tabla a:hover{
+    text-decoration: none;
+    color: black;
+}
+section #buttonConsultar {
+    margin-top: 8em;
+    margin-left: 35em;
+}/*
+#buttonConsultar button{ background: white;}
+#buttonInfo button{ background: white;}*/
+
+section #busqueda{
+    margin-left: 5em;
+}
+/* MENU DESPLEGABLE GESTION DE MESAS*/
+section #men{
+    border: none;
+    margin-left: 70em;
+    margin-top: -6.5em;
+}
+section #navigationMenu {margin-top: -12.9em; margin-left: -2.6em}
+#navigationMenu li{
+    color: white;
+    list-style:none;
+    height:39px;
+    padding:1px;
+    width:40px;
+}
+#navigationMenu li:hover{color:green;}
+#navigationMenu span{
+    /* Container properties */
+    width:0;
+    left:35px;
+    padding:0;
+    position:absolute;
+    overflow:hidden;
+    /* Text properties */
+    font-family:'Myriad Pro',Arial, Helvetica, sans-serif;
+    font-size:18px;
+    font-weight:bold;
+    letter-spacing:0.6px;
+    white-space:nowrap;
+    line-height:35px;
+    /* CSS3 Transition: */
+    -webkit-transition: 0.50s;  
+    /* Future proofing (these do not work yet): */
+    -moz-transition: 0.3s;
+    transition: 0.3s;
+}
+#navigationMenu input{ margin-top: 1.5em;}
+#navigationMenu button{
+    background: none;
+    border: 0em;
+    height:32px;
+    width:32px;
+    display:block;
+    position:relative;
+}
+/* General hover styles */
+#navigationMenu button:hover span{ width:auto; padding:0 10px;overflow:visible; }
+#navigationMenu button a {text-decoration: none; color: white; font-size:14px;}
+
+/* FORMULARIO DE REGISTRO PARA MESAS*/ 
+section#formularioDatos{
+    width: 50%;
+    margin-top: 3em;
+    margin-left: 9em;
+    background: white;
+}
+section#formulario{
+    margin-top: 3em;
+}
+section#formulario label{
+    margin-top: 0em;
+    margin-left: 3.3em;
+}
+section#formulario input{
+    margin-top: 0.5em;
+    margin-left: 4em;
+}
+section#formulario select{
+    margin-top: 1em;
+    margin-left: 4em;
+    width: 13em;
+}
+section#buttonRegistrar button{
+    margin-top: 2em;
+    margin-left: 7em;
+    margin-bottom: 2em;
+}
+/* */
+section#formulario2{
+    margin-top: 1em;
+}
+section#formulario2 label{
+    margin-top: 0em;
+    margin-left: 3.3em;
+}
+section#formulario2 input{
+    margin-top: 0.5em;
+    margin-left: 4em;
+}
+section#formulario2 select{
+    margin-top: 1em;
+    margin-left: 4em;
+    width: 13em;
+}
+/* */
+section#formularioDatos2{
+    width: 42%;
+    margin-top: 3em;
+    margin-left: 23em;
+    background: white;
+}
+section#formulario3{
+    margin-top: 0em;
+    margin-left: 10em;
+}
+section#formulario3 label{
+    margin-top: 0em;
+    margin-left: 1em;
+}
+section#formulario3 input{
+    margin-top: 0.5em;
+    margin-left: 1.5em;
+}
+section#formulario3 button{
+    margin-top: 1em;
+    margin-left: 3em;
+    width: 10em;
+    margin-bottom: 2em;
+}
