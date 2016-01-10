@@ -3,7 +3,7 @@
 <?php
 
 session_start();
-if($_SESSION["miSession"]['TIPO']==1){
+if($_SESSION["miSession"]['TIPO_USUARIO']==1){
    
     ?>
     <div>
@@ -86,14 +86,14 @@ if($_SESSION["miSession"]['TIPO']==1){
                     <div class="col-md-3">
                         
                         <div class="menu-item blue">
-                            <a href="#feature-modal" data-toggle="modal">
-                                <i class="fa fa-magic"></i>
+                            <a href="ingreso_menus.php">
+                                <i class="fa fa-spoon"></i>
                                 <p>Menú</p>
                             </a>
                         </div>
 
                         <div class="menu-item green">
-                            <a href="#portfolio-modal" data-toggle="modal">
+                            <a href="gestionMesas.html">
                                 <i class="fa fa-file-photo-o"></i>
                                 <p>Mesas</p>
                             </a>
@@ -101,7 +101,7 @@ if($_SESSION["miSession"]['TIPO']==1){
 
                          <div class="menu-item light-red">
                             <a href="facturas.php" >                                
-                                <i class="fa fa-area-chart"></i>
+                                <i class="fa fa-file-pdf-o"></i>
                                 <p>Facturas</p>
                             </a>
                          </div>

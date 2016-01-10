@@ -8,20 +8,24 @@ if($user == ''){
 	header('Location: logeo.php?error=2');
 }
 
-
 ?>
-<a href='cerrarsesion.php'>cerrar session</a>
+
 
 <html>
+<title>Gestion de Facturas</title>
 <head>
-	<title>Gestion de Facturas</title>
+	
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/Table.css">
-</head>
-<body>	
-	
+	<img src="images/logo.png" id="logo">
+	<div id="sesion"><a href='cerrarsesion.php'>cerrar session</a></div>
 
-	<div class="container">		
+</head>
+
+
+<body>
+
+	<div class="container2">		
 				            
 				<header>
 				
@@ -42,7 +46,7 @@ if($user == ''){
 							<table >
 								<tr> 													
                                     <td>Detalle Factura</td>
-									<td>Ver</td>
+									
 								</tr>
 								
                                 <?php
@@ -55,12 +59,9 @@ if($user == ''){
                                 <tr>
                                 	<form class="form-4" role="form" method="post" action="facturasPdf.php">  
 	                                	<p>                              		
-	                                    <td><input type="radio" name="cedula" class="form-control" value=<?php echo $consulta2['CEDULA'];?>> <?php echo $consulta2['NOMBRES'];?></td>																		
+	                                    <td><input type="radio" name="cedula" class="form-control" value=<?php echo $consulta2['CEDULA'];?>> <?php echo $consulta2['NOMBRES'];?> <?php echo $consulta2['APELLIDOS'];?></td>																		
 										</p>
-										<p>
-							        	<td></td>
-							        	</p> 
-
+										
 									
 								</tr>
 								

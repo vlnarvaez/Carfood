@@ -44,13 +44,13 @@ $err = isset($_GET['error']) ? $_GET['error'] : null ;
 				    <center><h1>Login</h1></center>
 				    </div>
 				    
-					    <div id="datos">
+					    <div id="datos" >
 						    <p>
-						        <label for="login">Ingrese usuario</label>						       
+						        <a class="btn btn-primary"><i class="fa fa-user fa-fw"><label for="login">Ingrese usuario</label></i></a>					       
 						        <input type="text" name="user" class="form-control" placeholder="ingresar usuario" required autofocus>
 						    </p>
 						    <p>
-						        <label for="password">Ingrese contraseña</label>						       
+						        <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span><label for="password">Ingrese contraseña</label>						       
 						        <input type="password" name="pass" class="form-control" placeholder="ingresar contraseña" required>
 						    </p>
 

@@ -10,6 +10,37 @@ body {
     font-family: 'Open Sans', sans-serif;
 }
 
+header {
+    width: 97%;
+    height: 90px;
+    background-color: darkred;
+    color: white;
+    margin-bottom: 15%;
+}
+
+#sesion {
+ position:relative;
+ top:40px;
+ left:10px;
+}
+
+.container2{
+    margin: -4%;
+}
+
+#logo {
+    width: 150px;
+    height: 150px;
+    display: inline-block;
+    vertical-align: top;
+    position: absolute;
+    z-index: 2;
+    left: 10%;
+    -webkit-box-shadow: 0px 0px 10px rgba(74, 74, 74, 0.75);
+    -moz-box-shadow: 0px 0px 10px rgba(74, 74, 74, 0.75);
+    box-shadow: 0px 0px 10px rgba(74, 74, 74, 0.75);
+}
+
 a,
 a:hover,
 a:focus,
@@ -28,7 +59,7 @@ li {
 }
 
 a {
-    color: #7F1422;
+    color: #fdf8f8;
     text-decoration: none;
 }
 
@@ -194,8 +225,8 @@ fieldset[disabled] .btn-primary.active {
     //color: #333;
 	animation: wobble;
 	-webkit-animation: wobble;
-	animation-duration: 1000ms;
-	-webkit-animation-duration: 1000ms;
+	animation-duration: 2000ms;
+	-webkit-animation-duration: 2000ms;
 }
 
 @media only screen 
