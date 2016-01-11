@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<?php
+require('conexion.php');
+session_start();
+$user = isset($_SESSION["miSession"]['USUARIO']) ? $_SESSION["miSession"]['USUARIO'] : null ;
+
+if($user == ''){
+    header('Location: logeo.php?error=2');
+}
+
+
+?>
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>CarFood </title>
+
+        <!-- Custom CSS -->
+        <link href="css/estiloGM.css" rel="stylesheet">
+
+        <!-- Custom Fonts -->
+        <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+
+
+        <!-- Template js -->
+        <script src="js/jquery-2.1.1.min.js"></script>
+        <script src="bootstrap/js/bootstrap.min.js"></script>
+        <script src="js/jquery.appear.js"></script>
+        <script src="js/contact_me.js"></script>
+        <script src="js/jqBootstrapValidation.js"></script>
+        <script src="js/modernizr.custom.js"></script>
+        <script src="js/script.js"></script>
+
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+    </head>
+    
+    <body>
+        
+        <!-- Start Logo Section -->
+        <section id="pag">
+            <section id="logo">
+                <img height="200" border="0" width="250" alt="130" src="images/logo.png" />  
+            </section>
+
+            <section id="tabla">
+                 <table style="width:90%">
+                    <tr>
+                        <td>NUM MESA</td>
+                        <td>CAPACIDAD</td>
+                        <td>ESTADO</td> 
+                        <td>RESERVA</td>
+                        <td>EDITAR</td>
+                        <td>ELIMINAR</td>                               
+                      </tr>
+              
+                    <tr>
+                    <td> <select name="numMesa" >
+                        <option>Seleccione una mesa</option>
+                        <option>Todas</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        </select>
+                    </td>
+                    <td>6</td>
+                    <td>Disponible</td>
+                    <td><input type="text" name="cedula" required placeholder="Cedula"><br><br></td> 
+                    <td> <a href="index.html">EDITAR</A> </td>
+                    <td> <a href="index.html">ELIMINAR</A> </td>                        
+                    </tr>
+                </table>
+            </section>
+                    
+            <section id="men">
+                <ul id="navigationMenu" name="icon">
+                     <a class="services" src="images/icon/fav1.png" href="#">
+                        <li><span>Mesa<br></span></li>
+                        <li><span>Capacidad<br></span></li>
+                        <li><span>Estado<br></span></li>
+                        <li><span>Reserva<br></span></li>
+                     </a>
+                </ul>
+            </section>
+                    
+            </section>   
+    </body>
+</html>
