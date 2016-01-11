@@ -1,6 +1,10 @@
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+.controller('AppCtrl', function($scope, $rootScope, $ionicModal, $timeout) {
+
+  $rootScope.pedido = [];
+  $rootScope.precioTotal = 0;
+  $rootScope.numeroPlatos = 0;
   $scope.selection = {};
   $scope.loginData = {};
 
@@ -11,12 +15,53 @@ angular.module('starter.controllers', [])
     $scope.modal = modal;
   });
 
-  $scope.agregar = function(plato){
-    var idPlato = plato.IDPLATO;
+  $scope.gestion = function(plato) {
+    var bandera = false;
+    for (var i = 0; i < $rootScope.pedido.length; i++){
+      if (plato.ID_PLATO == $rootScope.pedido[i].ID_PLATO){
+        bandera = true;
+        alert("iguales");
+        $scope.removePlato(plato,i);
+      }
+    }
+    if (bandera){
 
-    $scope.selection[idPlato].cantidad = 1;
-    $scope.selection[idPlato].nombrePlato = plato.NOMBRE;
+    }else{
+      $scope.addPlato(plato);
+    }
   }
+
+  $scope.addPlato = function(plato){
+    $rootScope.pedido.push(plato);
+    alert(JSON.stringify($rootScope.pedido));
+    alert("agregado");
+
+    $http({
+      method: 'GET',
+      url: "http://172.18.82.245/demo/platosCarta.php?tipo='"+$stateParams.tipo+"'"
+    }).success(function(data, status, headers, config) {
+      $scope.platos=data;
+    }).error(function(data, status, headers, config) {
+      alert("Error here. Estado HTTP:"+status);
+    });
+
+
+  }
+
+  $scope.removePlato = function(plato,i){
+    $rootScope.pedido.splice(i,1);
+    alert(JSON.stringify($rootScope.pedido));
+    alert("Eliminado");
+  }
+
+  $scope.destroyPedido = function(){
+    $rootScope.pedido = [];
+    $rootScope.precioTotal = 0;
+    $rootScope.numeroPlatos = 0;
+  }
+
+
+
 
   // Triggered in the login modal to close it
   $scope.closeLogin = function() {
@@ -44,24 +89,14 @@ angular.module('starter.controllers', [])
   };
 })
 
+
 .controller('PlatosCartaCtrl', function($scope, $rootScope, $http, $stateParams, sesion) {
   $http({
     method: 'GET',
-    url: "http://172.18.82.250/demo/platosCarta.php?tipo='"+$stateParams.tipo+"'"
+    url: "http://172.18.82.245/demo/platosCarta.php?tipo='"+$stateParams.tipo+"'"
   }).success(function(data, status, headers, config) {
     $scope.platos=data;
   }).error(function(data, status, headers, config) {
-    alert("Error. Estado HTTP:"+status);
-  });
-})
-
-.controller('MenuesCtrl', function($scope, $rootScope, $http, $stateParams, sesion) {
-  $http({
-    method: 'GET',
-    url: "http://192.168.1.14/demo/menuesCarta.php?tipo="+$stateParams.tipo
-  }).success(function(data, status, headers, config) {
-    $scope.menues=data;
-  }).error(function(data, status, headers, config) {
-    alert("Error. Estado HTTP:"+status);
+    alert("Error here. Estado HTTP:"+status);
   });
 })
