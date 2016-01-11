@@ -36,7 +36,7 @@ app.controller('BdCtrl', ['$scope','$http', function($scope, $http){
 
   $http({
     method: 'GET',
-    url: "http://192.168.0.103/demo/persisirPlatos.php"
+    url: "http://192.168.1.4/demo/persisirPlatos.php"
   }).success(function(data, status, headers, config) {
     $scope.platos=data;
   }).error(function(data, status, headers, config) {
@@ -57,14 +57,16 @@ app.controller('GuardarPlatosCtrl',['$scope','$http', '$sce', function($scope, $
 
     $http({
       method: 'POST',
-      url: 'http://192.168.0.103/demo/guardarPlatos.php',
+      url: 'http://192.168.1.4/demo/guardarPlatos.php',
       data: FormData,
       headers: {'Content-Type': 'application/x-www-form-urlencoded'},
 
     }).
     success(function(data, status, headrs, config) {
+      alert("OK");
     }).
     error(function(data, status, headrs, config) {
+      alert("NOP");
     });
     return false;
   };

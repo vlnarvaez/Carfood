@@ -58,7 +58,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     views: {
       'menuContent': {
         templateUrl: 'templates/desayunos.html',
-        controller: 'MenuesCtrl'
+        controller: 'PlatosCartaCtrl'
       }
     }
   })
@@ -68,7 +68,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     views: {
       'menuContent': {
         templateUrl: 'templates/meriendas.html',
-        controller: 'MenuesCtrl'
+        controller: 'PlatosCartaCtrl'
       }
     }
   })

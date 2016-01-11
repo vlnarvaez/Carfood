@@ -7,35 +7,46 @@
       </div>
     </div>
     <div class="list card">
-      <div class="card" ng-repeat="menu in menues">
+      <div class="card" ng-repeat="plato in platos">
         <div class="item item-avatar">
-          <img src="http://www.lataberna.com.ec/734-large_default/pilsener-twiss-off.jpg" >
-          <h2>Menu testei</h2>
-          <p>{{menu.PRECIO}}</p>
+          <img ng-src="http://www.lataberna.com.ec/734-large_default/pilsener-twiss-off.jpg" >
+          <h2>{{plato.NOMBRE}}</h2>
+          <p>{{plato.PRECIO | currency}}</p>
         </div>
         <div class="item item-body">
-          <img class="full-image" src="https://pbs.twimg.com/profile_images/1191028919/pilsener.jpg" alt="" />
+          <img class="full-image" ng-src={{plato.IMAGEN}} alt="" />
           <p style="text-align:justify">
-            Descripción
+            {{plato.DETALLE}}
           </p>
         </div>
         <div class="row">
-          <div class="col col-15">
-            <div class="checkbox checkbox-balanced">
-              <label class="checkbox">
-                <input type="checkbox">
-              </label>
+
+          <div class="col col-80">
+            <div class="range range-positive">
+              <i class="icon ion-minus-round"></i>
+              <input type="range" name="volume" ng-init="plato.CANT=1" ng-model="plato.CANT">
+              <i class="icon ion-plus-round"></i>
             </div>
           </div>
-          <div class="col col-75">
-            <div class="range range-positive">
-              <i class="icon ion-volume-low"></i>
-              <input type="range" name="volume">
-              <i class="icon ion-volume-high"></i>
+          <div class="col col-10">
+            <div class="checkbox checkbox-balanced">
+              <label class="checkbox">
+                <input type="checkbox" ng-click="gestion(plato)">
+              </label>
             </div>
           </div>
         </div>
       </div>
     </div>
   </ion-content>
+
+  <div class="float-button">
+    <span class="height-fix">
+      <a class="content">
+        <i class="ion-paper-airplane" ng-click="alerta()"> </i>
+      </a>
+    </span>
+  </div>
+
+
 </ion-view>
