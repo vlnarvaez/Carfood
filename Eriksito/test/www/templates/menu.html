@@ -23,7 +23,7 @@
 
             <div class="" id="avatarSideMenu"></div>
             <br>
-            <h4 style="color:white"><strong>{{sesion}}</strong></h4>
+            <h4 style="color:white"><strong>{{cliente.apellidos}}, {{cliente.nombres}}</strong></h4>
           </div>
 
 
@@ -47,6 +47,9 @@
           Postres
         </ion-item>
         <ion-item menu-close ng-click="login()">
+          <strong>Registrate!</strong>
+        </ion-item>
+        <ion-item menu-close ng-click="loginCliente()">
           <strong>Login</strong>
         </ion-item>
       </ion-list>

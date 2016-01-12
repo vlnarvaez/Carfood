@@ -36,13 +36,17 @@ angular.module('starter.controllers', [])
 
   $scope.guardarPedido = function(){
     var datos = {
-      'id_mesa' : "1",
-      'cedula' : "1103460026",
-      'total' : "10.60",
-      'observaciones' : "Insercion APP"
+      'id_mesa' : $rootScope.idMesa,
+      'cedula' : $rootScope.cliente.cedula,
+      'total' : $rootScope.precioTotal,
+      'observaciones' : "Insercion Aplicacion"
     };
 
     datos = JSON.stringify(datos);
+
+    var datosDetalle = $rootScope.detallePedido;
+
+    datosDetalle = JSON.stringify(datosDetalle);
 
     $http({
       method: 'POST',
@@ -52,11 +56,43 @@ angular.module('starter.controllers', [])
 
     }).
     success(function(data, status, headers, config) {
-      alert(datos);
+
+      $http({
+        method: 'GET',
+        url: "http://192.168.1.4/demo/getIdPedido.php?cedula='1103460026'&total='"+$rootScope.precioTotal+"''"
+      }).success(function(data, status, headers, config) {
+        $scope.UltimoID = data[0].ID;
+        alert("LAST:"+JSON.stringify(data[0].ID));
+
+        $http({
+          method: 'POST',
+          url: 'http://192.168.1.4/demo/addDetallePedido.php',
+          data: datosDetalle,
+          headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+
+        }).
+        success(function(data, status, headers, config) {
+          console.log("Dtos envio"+datosDetalle);
+          alert("TodoInsertado");
+        }).
+        error(function(data, status, headers, config) {
+          alert("NOP");
+        });
+
+
+      }).error(function(data, status, headers, config) {
+        alert("Error here. Estado HTTP:"+status);
+      });
+
+
     }).
     error(function(data, status, headers, config) {
       alert("NOP");
     });
+
+
+
+
     return false;
   }
 
@@ -127,7 +163,31 @@ angular.module('starter.controllers', [])
   };
 
   $scope.datos = function() {
-    alert($scope.loginData.Fritada)
+
+    var datosCliente = JSON.stringify($scope.loginData);
+
+    alert(datosCliente);
+
+    $http({
+      method: 'POST',
+      url: 'http://192.168.1.4/demo/addCliente.php',
+      data: datosCliente,
+      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+
+    }).
+    success(function(data, status, headers, config) {
+      console.log("Dtos envio"+datosCliente);
+      $rootScope.cliente.cedula = $scope.loginData.cedula;
+      $rootScope.cliente.nombres = $scope.loginData.nombres;
+      $rootScope.cliente.apellidos = $scope.loginData.apellidos;
+      $rootScope.cliente.telefono = $scope.loginData.telefono;
+      $rootScope.cliente.email = $scope.loginData.email;
+    }).
+    error(function(data, status, headers, config) {
+      alert("NOP");
+    });
+
+    alert($rootScope.cliente.cedula);
   }
 
   // Open the login modal
@@ -135,9 +195,78 @@ angular.module('starter.controllers', [])
     $scope.modal.show();
   };
 
+  $scope.loginCliente = function(){
+
+    var myPopUp = $ionicPopup.show({
+      template: '<form ng-submit="doLogin()">'+
+      '<label class="item item-input">'+
+      '<span class="input-label">E-mail</span>'+
+      '<input type="email" ng-model="loginData.email" required>'+
+      '</label>'+
+      '<label class="item item-input">'+
+      '<span class="input-label">Cedula</span>'+
+      '<input type="number" ng-model="loginData.cedula" required>'+
+      '</label>'+
+      '<label class="item">'+
+      //'<button class="button button-block button-balanced" type="submit">Ingresar</button>'+
+      //'<button class="button button-block button-assertive">Volver</button>'+
+      '</label>'+
+      '</form>',
+      title: 'Bienvenido !',
+      subTitle: 'Por favor, ingrese sus datos',
+      scope: $scope,
+
+      buttons:[
+        {text: 'Volver'},
+        {
+          text: '<b>Save</b>',
+          type: 'button-positive',
+          onTap: function(e){
+            $scope.doLogin();
+          }
+        }
+      ]
+    });
+
+    myPopUp.then(function(res){
+      console.log('Presionado', res);
+    });
+
+
+
+  }
+
+
   // Perform the login action when the user submits the login form
   $scope.doLogin = function() {
     console.log('Doing login', $scope.loginData);
+
+    alert($scope.loginData.email);
+
+    $http({
+      method: 'GET',
+      url: "http://192.168.1.4/demo/loginCliente.php?email='"+$scope.loginData.email+"'&cedula='"+$scope.loginData.cedula+"'"
+    }).success(function(data, status, headers, config) {
+      //$rootScope.cliente = $data;
+      if (parseFloat(JSON.stringify(data.length)) > 0){
+
+        $scope.loginData = data;
+
+        $rootScope.cliente.cedula = $scope.loginData[0].CEDULA;
+        $rootScope.cliente.nombres = $scope.loginData[0].NOMBRES;
+        $rootScope.cliente.apellidos = $scope.loginData[0].APELLIDOS;
+        $rootScope.cliente.telefono = $scope.loginData[0].TELEFONO;
+        $rootScope.cliente.email = $scope.loginData[0].EMAIL;
+
+      }else{
+        alert(JSON.stringify($scope.loginData.length));
+      }
+
+    }).error(function(data, status, headers, config) {
+      alert("Error here. Estado HTTP:"+status);
+    });
+
+    alert("paso");
 
     // Simulate a login delay. Remove this and replace with your login
     // code if using a login system
