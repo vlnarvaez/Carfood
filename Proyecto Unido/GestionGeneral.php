@@ -6,10 +6,8 @@ session_start();
 if($_SESSION["miSession"]['TIPO_USUARIO']==1){
    
     ?>
-    <div>
-        <p><font color="#FFFFFF">Bienvenido: <?php echo $_SESSION["miSession"]['USUARIO'];?></font>
-        <font color="#FFFFFF"> <?php echo " <a href='cerrarsesion.php'>cerrar session</a>";?></font></p>
-    </div>
+    
+    <div id="sesion"><a href='cerrarsesion.php'>cerrar session</a></div>
     <?php
 }else{
     header('Location: logeo.php?error=1');
@@ -27,7 +25,7 @@ if($_SESSION["miSession"]['TIPO_USUARIO']==1){
         <meta name="author" content="">
 
         <title>Gestion General</title>
-
+       
         <!-- Bootstrap Core CSS -->
         <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -69,7 +67,10 @@ if($_SESSION["miSession"]['TIPO_USUARIO']==1){
                     <div class="col-md-12">
                         <div class="logo text-center">
                             <h1>Gestion General</h1>
-                            <span>meús</span>
+                             <div>
+                            <p><font color="#FFFFFF">Bienvenido: <?php echo $_SESSION["miSession"]['USUARIO'];?></font>
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -93,7 +94,7 @@ if($_SESSION["miSession"]['TIPO_USUARIO']==1){
                         </div>
 
                         <div class="menu-item green">
-                            <a href="gestionMesas.php">
+                            <a href="gestionMesas.html">
                                 <i class="fa fa-file-photo-o"></i>
                                 <p>Mesas</p>
                             </a>

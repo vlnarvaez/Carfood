@@ -21,81 +21,124 @@ while ($filas=mysql_fetch_array($consul) and $puerta='continuar' ) {
 	$pdf = new FPDF();
 	$pdf->AddPage();
 	$pdf->SetFont('Arial', '', 10);
-	$pdf->SetDrawColor(0,80,180);
-    $pdf->SetFillColor(230,230,0);
+	$pdf->SetDrawColor(0, 0, 0);
+    $pdf->SetFillColor(130,	0,	0);
 	$pdf->Cell(197, 30, '', 1);
     $pdf->Ln(10);
-	$pdf->Image('images/logo.png' , 90 ,14, 20 , 23,'PNG');
-	$pdf->Cell(150, 10, '', 0);
-	$pdf->SetFont('Arial', '', 9);
-	$pdf->Cell(50, 10, 'Fecha: '.date('d-m-Y').'', 0);
-	$pdf->Ln(15);
-	$pdf->SetFont('Arial', 'B', 11);
-	$pdf->Ln(20);
-	$pdf->Cell(80, 8, '', 0);
-	$pdf->Cell(100, 8, 'FACTURA', 0);
-	$pdf->Ln(23);
-	$pdf->SetFont('Arial', 'B', 8);
-
-    
-    $pdf->Cell(80, 35, '', 1);
-    $pdf->Cell(30, 35, '', 0);
-    $pdf->Cell(87, 35, '', 1);
-    $pdf->Ln(4);
-	$pdf->Cell(20, 8, 'Cedula:', 0);
-    $pdf->SetFont('Arial', '', 8);
-	$pdf->Cell(90, 8,$miCliente['CEDULA'], 0);
+	$pdf->Image('images/logo.png' , 20 ,14, 20 , 23,'PNG');
+	$pdf->Cell(40, 10, '', 0);
 	$pdf->SetFont('Arial', 'B', 8);
 	$pdf->Cell(30, 8, 'Nombre Empresa:', 0);
 	$pdf->SetFont('Arial', '', 8);
-	$pdf->Cell(20, 8, 'CARFOOD', 0);
+	$pdf->Cell(60, 8, 'CARFOOD', 0);
+	$pdf->SetFont('Arial', 'B', 14);
+	$pdf->SetTextColor(255, 255, 255);
+	$pdf->Cell(20, 8, 'R.U.C. ', 1, 0,'C', True);
+	$pdf->SetFont('Arial', '', 14);
+	$pdf->SetTextColor(0, 0, 0);
+	$pdf->Cell(8, 8,utf8_decode(' Nº: 220956789'), 0);
 	$pdf->Ln(4);
-	$pdf->SetFont('Arial', 'B', 8);
-	$pdf->Cell(20, 8, 'Nombre:', 0);
-	$pdf->SetFont('Arial', '', 8);	
-	$pdf->Cell(90, 8,$miCliente['NOMBRES'], 0);
+	$pdf->Cell(40, 10, '', 0);
 	$pdf->SetFont('Arial', 'B', 8);
 	$pdf->Cell(30, 8, 'Direccion:', 0);
 	$pdf->SetFont('Arial', '', 8);
 	$pdf->Cell(20, 8, 'Marcelino Champagnat, San Cayetano Alto', 0);
 	$pdf->Ln(4);
-	$pdf->SetFont('Arial', 'B', 8);
-	$pdf->Cell(20, 8, 'Apellido:', 0);
-	$pdf->SetFont('Arial', '', 8);
-	$pdf->Cell(90, 8,$miCliente['APELLIDOS'], 0);
+	$pdf->Cell(40, 10, '', 0);
 	$pdf->SetFont('Arial', 'B', 8);
 	$pdf->Cell(30, 8, 'Telefono:', 0);
 	$pdf->SetFont('Arial', '', 8);
 	$pdf->Cell(20, 8, '2577616', 0);
-	$pdf->Ln(4);	
-	$pdf->SetFont('Arial', 'B', 8);
-	$pdf->Cell(20, 8, 'Telefono:', 0);
-	$pdf->SetFont('Arial', '', 8);
-	$pdf->Cell(90, 8,$miCliente['TELEFONO'], 0);
+	$pdf->Ln(4);
+	$pdf->Cell(40, 10, '', 0);
 	$pdf->SetFont('Arial', 'B', 8);
 	$pdf->Cell(30, 8, 'Email:', 0);
 	$pdf->SetFont('Arial', '', 8);
 	$pdf->Cell(20, 8, 'carfood@gmail.com', 0);
-	$pdf->Ln(4);	
+	$pdf->SetFont('Arial', '', 9);
+	
+	$pdf->SetFont('Arial', 'B', 11);
+	$pdf->Ln(10);
+	$pdf->Cell(80, 8, '', 0);
+	$pdf->Ln(13);
+	
 	$pdf->SetFont('Arial', 'B', 8);
-	$pdf->Cell(20, 8, 'Email:', 0);
+    $pdf->Cell(197, 30, '', 1);
+    $pdf->Cell(30, 35, '', 0);
+   
+    $pdf->Ln(4);
+	
+	$pdf->Cell(10, 5, '');
+	$pdf->SetTextColor(255, 255, 255);
+	$pdf->SetFont('Arial', 'B', 8);
+	$pdf->Cell(20, 5, 'Cedula:', 1, 0,'C', True);
+    $pdf->SetFont('Arial', '', 8);
+    $pdf->SetTextColor(0, 0, 0);
+    $pdf->Cell(4, 5);
+	$pdf->Cell(60, 5,$miCliente['CEDULA'], 0);
+
+	$pdf->SetFont('Arial', 'B', 8);
+	$pdf->Cell(10, 5, '');
+	$pdf->SetTextColor(255, 255, 255);
+	$pdf->Cell(20, 5, 'Telefono:', 1, 0,'C', True);
 	$pdf->SetFont('Arial', '', 8);
-	$pdf->Cell(20, 8,$miCliente['EMAIL'], 0);
-	$pdf->Ln(4);
+	$pdf->SetTextColor(0, 0, 0);
+	$pdf->Cell(4, 5);
+	$pdf->Cell(90, 5,$miCliente['TELEFONO'], 0);
+	$pdf->Ln(8);	
 
+    $pdf->Cell(10, 5, ''); 
+    $pdf->SetTextColor(255, 255, 255);
+	$pdf->SetFont('Arial', 'B', 8);
+	$pdf->Cell(20, 5, 'Nombre:', 1, 0,'C', True);
+	$pdf->SetFont('Arial', '', 8);	
+	$pdf->SetTextColor(0, 0, 0);
+	$pdf->Cell(4, 5);
+	$pdf->Cell(60, 5,$miCliente['NOMBRES'], 0);
 
+	$pdf->SetFont('Arial', 'B', 8);
+	$pdf->Cell(10, 5, '');
+	$pdf->SetTextColor(255, 255, 255);
+	$pdf->Cell(20, 5, 'Email:', 1, 0,'C', True);
+	$pdf->SetFont('Arial', '', 8);
+	$pdf->SetTextColor(0, 0, 0);
+	$pdf->Cell(4, 5);
+	$pdf->Cell(20, 5,$miCliente['EMAIL'], 0);
+	$pdf->Ln(8);
+
+	$pdf->SetFont('Arial', 'B', 8);
+	$pdf->Cell(10, 5, '');
+	$pdf->SetTextColor(255, 255, 255);
+	$pdf->Cell(20, 5, 'Apellido:', 1, 0,'C', True);
+	$pdf->SetFont('Arial', '', 8);
+	$pdf->SetTextColor(0, 0, 0);
+	$pdf->Cell(4, 5);
+	$pdf->Cell(60, 5,$miCliente['APELLIDOS'], 0);
+
+	$pdf->SetFont('Arial', 'B', 8);
+	$pdf->Cell(10, 5, '');
+    $pdf->SetTextColor(255, 255, 255);
+	$pdf->Cell(20, 5, 'Fecha: ', 1, 0,'C', True);
+	$pdf->SetFont('Arial', '', 8);
+	$pdf->SetTextColor(0, 0, 0);
+	$pdf->Cell(4, 5);
+	$pdf->Cell(20, 5, date('d-m-Y').'', 0);
+	$pdf->Ln(8);	
+	
 	
 	$pdf->SetFont('Arial', 'B', 11);
 	$pdf->Ln(20);
-	$pdf->Cell(70, 8, '', 0);
-	$pdf->Cell(100, 8, 'LISTADO DE PRODUCTOS', 0);
-	$pdf->Ln(23);
+	$pdf->Cell(80, 8, '', 0);
+	$pdf->Cell(100, 8, 'DETALLE', 0);
+	$pdf->Ln(13);
 	$pdf->SetFont('Arial', 'B', 8);
-	$pdf->Cell(15, 8, 'Item', 1);
-	$pdf->Cell(140, 8, 'Detalle', 1);
-	$pdf->Cell(25, 8, 'Precio', 1);
+	$pdf->SetTextColor(255, 255, 255);
+	$pdf->Cell(15, 8, 'Item', 1, 0,'C', True);
+	$pdf->Cell(140, 8, 'Detalle', 1, 0,'C', True);
+	$pdf->Cell(25, 8, 'Precio', 1, 0, 'C',  True);
 
 	$pdf->Ln(8);
+	$pdf->SetTextColor(0, 0, 0);
 	$pdf->SetFont('Arial', '', 8);
 	$item = 0;
 	$Total = 0;
@@ -103,15 +146,14 @@ while ($filas=mysql_fetch_array($consul) and $puerta='continuar' ) {
 		$consulta3 = mysql_fetch_array($consulta2);
 		$Total = $consulta3['TOTAL'];
 				
-		if ($consulta4 = mysql_query("SELECT * FROM PEDIDOS p, DETALLE d, PLATOS pla where p.CEDULA=$ceduEnv and p.ID_PEDIDOS=d.ID_PEDIDOS and d.ID_PLATOS=pla.ID_PLATOS")) {
+		if ($consulta4 = mysql_query("SELECT * FROM pedidos p, detalle d, platos pla where p.CEDULA=$ceduEnv and p.ID_PEDIDOS=d.ID_PEDIDOS and d.ID_PLATO=pla.ID_PLATO")) {
 			
 			while ($consulta5 = mysql_fetch_array($consulta4)) {
 				$item = $item+1;
 
-				$pdf->Cell(15, 8, $item, 1);
+				$pdf->Cell(15, 8, $item, 1, 0, 'C');
 				$pdf->Cell(140, 8,$consulta5['NOMBRE'], 1);
-				
-				$pdf->Cell(25, 8, '$ '.$consulta5['PRECIO'], 1);
+				$pdf->Cell(25, 8, '$ '.$consulta5['PRECIO'], 1, 0,'C');
 				$pdf->Ln(8);
 				
 			}
@@ -122,15 +164,21 @@ while ($filas=mysql_fetch_array($consul) and $puerta='continuar' ) {
 
 	$pdf->SetFont('Arial', 'B', 8);
 	$pdf->Cell(149,8,'',0);
-	$pdf->Cell(31,8,'Total: $ '.$Total,1);
-	$pdf->Ln(60);
+	$pdf->SetTextColor(255, 255, 255);
+	$pdf->Cell(31,8,'Total: $ '.$Total,1, 0, 'C',  True);
+	$pdf->Ln(30);
 	$pdf->SetFont('Arial', '', 8);
+	$pdf->SetTextColor(0, 0, 0);
 	$pdf->Cell(50, 35, '', 0);
 	$pdf->Cell(90, 30, '', 1);
     $pdf->Ln(9);
-	$pdf->Cell(0,8,'_ _ _ _ _ _ _ _ _ _                      _ _ _ _ _ _ _ _ _ _' ,0,2,'C');
-	$pdf->Cell(0,8,   'Cliente                                 Encardado'        ,0,2,'C');
-
+    $pdf->Cell(55,8);
+	$pdf->Cell(80,8,'    _ _ _ _ _ _ _ _ _ _ _ _ _ _            _ _ _ _ _ _ _ _ _ _ _ _ _ _ _' ,0,2,'C');
+	$pdf->Cell(5,8);
+	$pdf->SetTextColor(255, 255, 255);
+	$pdf->Cell(30,8,  'Cliente',1,0,'C',True);
+	$pdf->Cell(11,8);
+	$pdf->Cell(30,8,   'Encardado' ,1,0,'C',True);
 
 	$pdf->Output();	
 
