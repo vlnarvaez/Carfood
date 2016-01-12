@@ -20,13 +20,15 @@
           </p>
         </div>
         <div class="row">
-
-          <div class="col col-80">
-            <div class="range range-positive">
-              <i class="icon ion-minus-round"></i>
-              <input type="range" name="volume" ng-init="plato.CANT=1" ng-model="plato.CANT">
-              <i class="icon ion-plus-round"></i>
-            </div>
+          <div class="col col-25">
+            <p class="menosUno" ng-click="menosUno($index)"><i class="icon ion-minus-round"></i></p>
+          </div>
+          <div class="col col-25">
+            <input type="hidden" name="volume" ng-init="plato.CANT=1" ng-model="plato.CANT">
+            <label>Cantidad: {{plato.CANT}}</label>
+          </div>
+          <div class="col col-25">
+            <p class="masUno" ng-click="masUno($index)"><i class="icon ion-plus-round"></i></p>
           </div>
           <div class="col col-10">
             <div class="checkbox checkbox-balanced">

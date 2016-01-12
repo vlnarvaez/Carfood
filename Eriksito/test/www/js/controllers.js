@@ -50,7 +50,7 @@ angular.module('starter.controllers', [])
 
     $http({
       method: 'POST',
-      url: 'http://192.168.1.4/demo/addPedido.php',
+      url: 'http://172.18.82.169/demo/addPedido.php',
       data: datos,
       headers: {'Content-Type': 'application/x-www-form-urlencoded'},
 
@@ -59,14 +59,14 @@ angular.module('starter.controllers', [])
 
       $http({
         method: 'GET',
-        url: "http://192.168.1.4/demo/getIdPedido.php?cedula='1103460026'&total='"+$rootScope.precioTotal+"''"
+        url: "http://172.18.82.169/demo/getIdPedido.php?cedula='1103460026'&total='"+$rootScope.precioTotal+"''"
       }).success(function(data, status, headers, config) {
         $scope.UltimoID = data[0].ID;
         alert("LAST:"+JSON.stringify(data[0].ID));
 
         $http({
           method: 'POST',
-          url: 'http://192.168.1.4/demo/addDetallePedido.php',
+          url: 'http://172.18.82.169/demo/addDetallePedido.php',
           data: datosDetalle,
           headers: {'Content-Type': 'application/x-www-form-urlencoded'},
 
@@ -170,7 +170,7 @@ angular.module('starter.controllers', [])
 
     $http({
       method: 'POST',
-      url: 'http://192.168.1.4/demo/addCliente.php',
+      url: 'http://172.18.82.169/demo/addCliente.php',
       data: datosCliente,
       headers: {'Content-Type': 'application/x-www-form-urlencoded'},
 
@@ -237,6 +237,8 @@ angular.module('starter.controllers', [])
   }
 
 
+
+
   // Perform the login action when the user submits the login form
   $scope.doLogin = function() {
     console.log('Doing login', $scope.loginData);
@@ -245,7 +247,7 @@ angular.module('starter.controllers', [])
 
     $http({
       method: 'GET',
-      url: "http://192.168.1.4/demo/loginCliente.php?email='"+$scope.loginData.email+"'&cedula='"+$scope.loginData.cedula+"'"
+      url: "http://172.18.82.169/demo/loginCliente.php?email='"+$scope.loginData.email+"'&cedula='"+$scope.loginData.cedula+"'"
     }).success(function(data, status, headers, config) {
       //$rootScope.cliente = $data;
       if (parseFloat(JSON.stringify(data.length)) > 0){
@@ -281,12 +283,21 @@ angular.module('starter.controllers', [])
   $scope.platos=[];
   $http({
     method: 'GET',
-    url: "http://192.168.1.4/demo/platosCarta.php?tipo='"+$stateParams.tipo+"'"
+    url: "http://172.18.82.169/demo/platosCarta.php?tipo='"+$stateParams.tipo+"'"
   }).success(function(data, status, headers, config) {
     $scope.platos=data;
   }).error(function(data, status, headers, config) {
     alert("Error here. Estado HTTP:"+status);
   });
+
+  $scope.masUno = function(index){
+    $scope.platos[index].CANT += 1;
+  }
+  $scope.menosUno = function(index){
+    if ($scope.platos[index].CANT > 1){
+        $scope.platos[index].CANT -= 1;
+    }
+  }
 
 
 
