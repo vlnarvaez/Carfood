@@ -1,13 +1,14 @@
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $rootScope, $ionicModal, $timeout, $ionicPopup, $http, $sce) {
+.controller('AppCtrl', function($scope, $rootScope, $ionicModal, $timeout, $ionicPopup, $http, $sce, $window) {
 
   $rootScope.pedido = [];
   $rootScope.detallePedido = [];
   $rootScope.precioTotal = 0;
-  $rootScope.idMesa = 9;
+  $rootScope.idMesa = 1;
   $rootScope.cliente = {};
   $scope.loginData = {};
+  $rootScope.sesion = "NO";
 
   // Create the login modal that we will use later
   $ionicModal.fromTemplateUrl('templates/login.html', {
@@ -16,13 +17,13 @@ angular.module('starter.controllers', [])
     $scope.modal = modal;
   });
 
+
   $scope.gestion = function(plato) {
     var bandera = false;
     for (var i = 0; i < $rootScope.pedido.length; i++){
       if (plato.ID_PLATOS == $rootScope.pedido[i].ID_PLATOS){
         if (plato.NOMBRE == $rootScope.pedido[i].NOMBRE){
           bandera = true;
-          alert("iguales");
           $scope.removePlato(plato,i);
         }
       }
@@ -39,7 +40,7 @@ angular.module('starter.controllers', [])
       'id_mesa' : $rootScope.idMesa,
       'cedula' : $rootScope.cliente.cedula,
       'total' : $rootScope.precioTotal,
-      'observaciones' : "Insercion Aplicacion"
+      'observaciones' : "Pedido Cliente"
     };
 
     datos = JSON.stringify(datos);
@@ -50,7 +51,7 @@ angular.module('starter.controllers', [])
 
     $http({
       method: 'POST',
-      url: 'http://172.18.82.169/demo/addPedido.php',
+      url: 'http://10.42.0.1/demo/addPedido.php',
       data: datos,
       headers: {'Content-Type': 'application/x-www-form-urlencoded'},
 
@@ -59,35 +60,39 @@ angular.module('starter.controllers', [])
 
       $http({
         method: 'GET',
-        url: "http://172.18.82.169/demo/getIdPedido.php?cedula='1103460026'&total='"+$rootScope.precioTotal+"''"
+        url: "http://10.42.0.1/demo/getIdPedido.php?cedula='1103460026'&total='"+$rootScope.precioTotal+"''"
       }).success(function(data, status, headers, config) {
         $scope.UltimoID = data[0].ID;
-        alert("LAST:"+JSON.stringify(data[0].ID));
+        console.log("Ultimo Pedido: "+JSON.stringify(data[0].ID));
 
         $http({
           method: 'POST',
-          url: 'http://172.18.82.169/demo/addDetallePedido.php',
+          url: 'http://10.42.0.1/demo/addDetallePedido.php',
           data: datosDetalle,
           headers: {'Content-Type': 'application/x-www-form-urlencoded'},
 
         }).
         success(function(data, status, headers, config) {
-          console.log("Dtos envio"+datosDetalle);
-          alert("TodoInsertado");
+          console.log("Datos detallePedido : "+datosDetalle);
+          //$window.location.reload();
+
+          $scope.logout();
+
+
         }).
         error(function(data, status, headers, config) {
-          alert("NOP");
+          console.log("NOP");
         });
 
 
       }).error(function(data, status, headers, config) {
-        alert("Error here. Estado HTTP:"+status);
+        console.log("Error here. Estado HTTP:"+status);
       });
 
 
     }).
     error(function(data, status, headers, config) {
-      alert("NOP");
+      console.log("NOP");
     });
 
 
@@ -108,7 +113,7 @@ angular.module('starter.controllers', [])
       buttons:[
         {text: 'Volver'},
         {
-          text: '<b>Save</b>',
+          text: '<b>Enviar</b>',
           type: 'button-positive',
           onTap: function(e){
             $scope.guardarPedido();
@@ -119,6 +124,7 @@ angular.module('starter.controllers', [])
 
     myPopUp.then(function(res){
       console.log('Presionado', res);
+
     });
 
   }
@@ -126,25 +132,26 @@ angular.module('starter.controllers', [])
 
   $scope.addPlato = function(plato){
     $rootScope.pedido.push(plato);
-    alert(JSON.stringify($rootScope.pedido));
+    console.log(JSON.stringify($rootScope.pedido));
 
     $rootScope.precioTotal += parseFloat(plato.PRECIO)*parseFloat(plato.CANT);
     var item = {
-      "ID_DETALLE": plato.ID_PLATOS,
+      "ID_DETALLE": plato.ID_PLATO,
       "CANTIDAD": plato.CANT
     };
 
     $rootScope.detallePedido.push(item);
-    //$rootScope.detallePedido.push(plato.ID_PLATOS);
-    alert(JSON.stringify($rootScope.detallePedido));
+    //$rootScope.detallePedido.push(plato.ID_PLATO);
+    console.log(" DETALLE DE PEDIDO : "+JSON.stringify($rootScope.detallePedido));
   }
 
   $scope.removePlato = function(plato,i){
     $rootScope.pedido.splice(i,1);
     $rootScope.detallePedido.splice(i,1);
-    alert(JSON.stringify($rootScope.pedido));
+    console.log(JSON.stringify($rootScope.pedido));
 
-    $rootScope.precioTotal -= parseFloat(plato.PRECIO);
+
+    $rootScope.precioTotal -= parseFloat(plato.PRECIO)*parseFloat(plato.CANT);
     alert("TOTAL: "+$rootScope.precioTotal);
   }
 
@@ -166,11 +173,11 @@ angular.module('starter.controllers', [])
 
     var datosCliente = JSON.stringify($scope.loginData);
 
-    alert(datosCliente);
+    console.log(datosCliente);
 
     $http({
       method: 'POST',
-      url: 'http://172.18.82.169/demo/addCliente.php',
+      url: 'http://10.42.0.1/demo/addCliente.php',
       data: datosCliente,
       headers: {'Content-Type': 'application/x-www-form-urlencoded'},
 
@@ -182,12 +189,15 @@ angular.module('starter.controllers', [])
       $rootScope.cliente.apellidos = $scope.loginData.apellidos;
       $rootScope.cliente.telefono = $scope.loginData.telefono;
       $rootScope.cliente.email = $scope.loginData.email;
+      $rootScope.sesion = "YES";
+      $scope.modal.hide();
+
     }).
     error(function(data, status, headers, config) {
-      alert("NOP");
+      console.log("NOP");
     });
 
-    alert($rootScope.cliente.cedula);
+    console.log($rootScope.cliente.cedula);
   }
 
   // Open the login modal
@@ -200,26 +210,24 @@ angular.module('starter.controllers', [])
     var myPopUp = $ionicPopup.show({
       template: '<form ng-submit="doLogin()">'+
       '<label class="item item-input">'+
-      '<span class="input-label">E-mail</span>'+
+      '<span class="input-label">E-mail:</span>'+
       '<input type="email" ng-model="loginData.email" required>'+
       '</label>'+
       '<label class="item item-input">'+
-      '<span class="input-label">Cedula</span>'+
+      '<span class="input-label">Cedula:</span>'+
       '<input type="number" ng-model="loginData.cedula" required>'+
       '</label>'+
-      '<label class="item">'+
       //'<button class="button button-block button-balanced" type="submit">Ingresar</button>'+
       //'<button class="button button-block button-assertive">Volver</button>'+
-      '</label>'+
       '</form>',
       title: 'Bienvenido !',
       subTitle: 'Por favor, ingrese sus datos',
       scope: $scope,
 
       buttons:[
-        {text: 'Volver'},
+        {text: 'Cancelar'},
         {
-          text: '<b>Save</b>',
+          text: '<b>Ingresar</b>',
           type: 'button-positive',
           onTap: function(e){
             $scope.doLogin();
@@ -237,17 +245,45 @@ angular.module('starter.controllers', [])
   }
 
 
+  $scope.logout = function(){
+
+    var myPopUp = $ionicPopup.show({
+      template: '',
+      title: 'Hasta pronto !',
+      subTitle: '',
+      scope: $scope,
+
+      buttons:[
+
+      ]
+    });
+
+    myPopUp.then(function(res){
+      console.log('Presionado', res);
+    });
+
+    $timeout(function() {
+      myPopUp.close(); //close the popup after 3 seconds for some reason
+    }, 1000);
+    $rootScope.cliente.cedula = "";
+    $rootScope.cliente.nombres = "";
+    $rootScope.cliente.apellidos = "";
+    $rootScope.cliente.telefono = "";
+    $rootScope.cliente.email = "";
+    $rootScope.sesion = "NO";
+
+  }
 
 
   // Perform the login action when the user submits the login form
   $scope.doLogin = function() {
     console.log('Doing login', $scope.loginData);
 
-    alert($scope.loginData.email);
+    console.log($scope.loginData.email);
 
     $http({
       method: 'GET',
-      url: "http://172.18.82.169/demo/loginCliente.php?email='"+$scope.loginData.email+"'&cedula='"+$scope.loginData.cedula+"'"
+      url: "http://10.42.0.1/demo/loginCliente.php?email='"+$scope.loginData.email+"'&cedula='"+$scope.loginData.cedula+"'"
     }).success(function(data, status, headers, config) {
       //$rootScope.cliente = $data;
       if (parseFloat(JSON.stringify(data.length)) > 0){
@@ -259,16 +295,39 @@ angular.module('starter.controllers', [])
         $rootScope.cliente.apellidos = $scope.loginData[0].APELLIDOS;
         $rootScope.cliente.telefono = $scope.loginData[0].TELEFONO;
         $rootScope.cliente.email = $scope.loginData[0].EMAIL;
+        $rootScope.sesion = "YES";
+
+
+        var myPopUp = $ionicPopup.show({
+          template: '',
+          title: 'Bienvenido !',
+          subTitle: '',
+          scope: $scope,
+
+          buttons:[
+
+          ]
+        });
+
+        myPopUp.then(function(res){
+          console.log('Presionado 2', res);
+        });
+
+        $timeout(function() {
+          myPopUp.close(); //close the popup after 3 seconds for some reason
+        }, 1000);
+
+
+
+
 
       }else{
-        alert(JSON.stringify($scope.loginData.length));
+        console.log(JSON.stringify($scope.loginData.length));
       }
 
     }).error(function(data, status, headers, config) {
-      alert("Error here. Estado HTTP:"+status);
+      console.log("Error here. Estado HTTP:"+status);
     });
-
-    alert("paso");
 
     // Simulate a login delay. Remove this and replace with your login
     // code if using a login system
@@ -283,11 +342,11 @@ angular.module('starter.controllers', [])
   $scope.platos=[];
   $http({
     method: 'GET',
-    url: "http://172.18.82.169/demo/platosCarta.php?tipo='"+$stateParams.tipo+"'"
+    url: "http://10.42.0.1/demo/platosCarta.php?tipo='"+$stateParams.tipo+"'"
   }).success(function(data, status, headers, config) {
     $scope.platos=data;
   }).error(function(data, status, headers, config) {
-    alert("Error here. Estado HTTP:"+status);
+    console.log("Error here. Estado HTTP:"+status);
   });
 
   $scope.masUno = function(index){
@@ -295,7 +354,7 @@ angular.module('starter.controllers', [])
   }
   $scope.menosUno = function(index){
     if ($scope.platos[index].CANT > 1){
-        $scope.platos[index].CANT -= 1;
+      $scope.platos[index].CANT -= 1;
     }
   }
 
